@@ -15,7 +15,7 @@ gray = cv2.imread('img1.jpg', cv2.IMREAD_GRAYSCALE) # converts an image to grays
 
 negative = 255 - gray
 # cv2.imshow('Negative', negative)
-# cv2.watershed(0)
+# cv2.waitkey(0)
 # cv2.destroyAllWindows()
 
 images = [img, gray, negative]
@@ -25,7 +25,10 @@ plt.figure(figsize=(12, 3))
 n = len(images)
 for i in range(n):
   plt.subplot(1, n, i + 1)
-  plt.imshow(images[i])
+  if i == 0:
+    plt.imshow(cv2.cvtColor(images[i], cv2.COLOR_BGR2RGB))
+  else:
+      plt.imshow(images[i], cmap='gray')
   plt.title(titles[i])
   plt.axis('off')
 
